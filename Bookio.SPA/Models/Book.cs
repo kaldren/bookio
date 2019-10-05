@@ -16,7 +16,7 @@ namespace Bookio.SPA.Models
         public string LongDescription { get; set; }
         public string Status { get; set; }
         public List<string> Authors { get; set; }
-        public List<object> Categories { get; set; }
+        public List<string> Categories { get; set; }
     }
 
 
