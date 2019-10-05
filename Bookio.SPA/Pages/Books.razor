@@ -14,6 +14,21 @@
             <img src="@book.ThumbnailUrl" class="card-img-top" alt="@book.Title">
             <div class="card-body">
                 <h5 class="card-title">@book.Title</h5>
+                <p>
+                    (
+                    @for (int i = 0; i < book.Authors.Count; i++)
+                    {
+                        if (i + 1 < book.Authors.Count)
+                        {
+                            <span>@book.Authors[i],</span>
+                        }
+                        else
+                        {
+                            <span>@book.Authors[i]</span>
+                        }
+                    }
+                    )
+                </p>
                 <p class="card-text">@book.ShortDescription</p>
                 <button class="btn btn-primary btn-view-book" @onclick="(e => ShowBookByIsbn(book.Isbn))" data-toggle="modal" data-target="#modal-@book.Isbn">View Book</button>
             </div>
