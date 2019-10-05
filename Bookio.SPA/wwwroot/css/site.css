@@ -119,8 +119,8 @@ app {
     justify-content: space-between;
 }
 .list-of-books .card {
-    width: 400px !important;
-    max-width: 350px !important;
+    width: 250px !important;
+    max-width: 250px !important;
     margin-bottom: 50px;
 }
 
@@ -133,12 +133,7 @@ app {
 }
 
 .btn-view-book {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
+    
 }
 /*#endregion Custom Styles*/
 @media (max-width: 767.98px) {
@@ -162,6 +157,7 @@ app {
     .main .top-row {
         position: sticky;
         top: 0;
+        z-index: 1;
     }
 
     .main > div {
