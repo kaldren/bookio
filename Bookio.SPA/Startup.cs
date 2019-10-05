@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Bookio.SPA.Areas.Identity;
 using Bookio.SPA.Data;
+using Bookio.SPA.Services;
 
 namespace Bookio.SPA
 {
@@ -47,6 +48,7 @@ namespace Bookio.SPA
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<WeatherForecastService>();
+            services.AddTransient<BookService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
