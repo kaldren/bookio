@@ -111,6 +111,11 @@ app {
     color: red;
 }
 
+/*#region Custom Styles*/
+.modal-dialog {
+    max-width: 900px;
+}
+/*#endregion Custom Styles*/
 @media (max-width: 767.98px) {
     .main .top-row {
         display: none;
