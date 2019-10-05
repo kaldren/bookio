@@ -27,7 +27,8 @@
                         }
                     }
                 </p>
-                <button class="btn btn-primary btn-view-book" @onclick="(e => ShowBookByIsbn(book.Isbn))" data-toggle="modal" data-target="#modal-@book.Isbn">View Book</button>
+                <button class="btn btn-primary btn-view-book" @onclick="(e => ShowBookByIsbn(book.Isbn))" data-toggle="modal" data-target="#modal-@book.Isbn">Info</button>
+                <button class="btn btn-success btn-read-book" @onclick="(e => ShowBookByIsbn(book.Isbn))" data-toggle="modal" data-target="#modal-@book.Isbn">Read</button>
             </div>
         </div>
 
@@ -61,7 +62,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
             </div>
