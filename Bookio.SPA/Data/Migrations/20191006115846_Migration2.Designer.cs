@@ -4,14 +4,16 @@ using Bookio.SPA.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Bookio.SPA.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191006115846_Migration2")]
+    partial class Migration2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,12 +43,6 @@ namespace Bookio.SPA.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AuthorId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Isbn")
                         .HasColumnType("nvarchar(max)");
 
@@ -72,10 +68,6 @@ namespace Bookio.SPA.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("BookId");
-
-                    b.HasIndex("AuthorId");
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("Books");
                 });
@@ -323,17 +315,6 @@ namespace Bookio.SPA.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("Bookio.SPA.Models.Book", b =>
-                {
-                    b.HasOne("Bookio.SPA.Models.Author", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId");
-
-                    b.HasOne("Bookio.SPA.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId");
                 });
 
             modelBuilder.Entity("Bookio.SPA.Models.BookAuthor", b =>

@@ -4,14 +4,16 @@ using Bookio.SPA.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Bookio.SPA.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191006115435_ChangedFromBookAuthorToAuthorAndBookCategoryToCategory]")]
+    partial class ChangedFromBookAuthorToAuthorAndBookCategoryToCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,12 +43,6 @@ namespace Bookio.SPA.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AuthorId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Isbn")
                         .HasColumnType("nvarchar(max)");
 
@@ -73,10 +69,6 @@ namespace Bookio.SPA.Data.Migrations
 
                     b.HasKey("BookId");
 
-                    b.HasIndex("AuthorId");
-
-                    b.HasIndex("CategoryId");
-
                     b.ToTable("Books");
                 });
 
@@ -92,7 +84,7 @@ namespace Bookio.SPA.Data.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("BookAuthors");
+                    b.ToTable("BookAuthor");
                 });
 
             modelBuilder.Entity("Bookio.SPA.Models.BookCategory", b =>
@@ -107,7 +99,7 @@ namespace Bookio.SPA.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("BookCategories");
+                    b.ToTable("BookCategory");
                 });
 
             modelBuilder.Entity("Bookio.SPA.Models.Category", b =>
@@ -325,21 +317,10 @@ namespace Bookio.SPA.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Bookio.SPA.Models.Book", b =>
-                {
-                    b.HasOne("Bookio.SPA.Models.Author", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId");
-
-                    b.HasOne("Bookio.SPA.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId");
-                });
-
             modelBuilder.Entity("Bookio.SPA.Models.BookAuthor", b =>
                 {
                     b.HasOne("Bookio.SPA.Models.Author", "Author")
-                        .WithMany("BookAuthors")
+                        .WithMany("Books")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -360,7 +341,7 @@ namespace Bookio.SPA.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("Bookio.SPA.Models.Category", "Category")
-                        .WithMany("BookCategories")
+                        .WithMany("Categories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

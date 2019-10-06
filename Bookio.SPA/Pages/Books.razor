@@ -21,11 +21,11 @@
                     {
                         if (i + 1 < book.BookAuthors.Count)
                         {
-                            <span>@book.BookAuthors.ElementAt(i),</span>
+                            <span>@book.BookAuthors.ElementAt(i).Author.Name,</span>
                         }
                         else
                         {
-                            <span>@book.BookAuthors.ElementAt(i)</span>
+                            <span>@book.BookAuthors.ElementAt(i).Author.Name</span>
                         }
                     }
                 </p>
@@ -53,11 +53,11 @@
                             {
                                 if (i + 1 < book.BookCategories.Count)
                                 {
-                                    <span>@book.BookCategories.ElementAt(i),</span>
+                                    <span>@book.BookCategories.ElementAt(i).Category.Name,</span>
                                 }
                                 else
                                 {
-                                    <span>@book.BookCategories.ElementAt(i)</span>
+                                    <span>@book.BookCategories.ElementAt(i).Category.Name</span>
                                 }
                             }
                             )

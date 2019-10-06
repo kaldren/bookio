@@ -29,7 +29,11 @@ namespace Bookio.SPA.Services
 
         public IEnumerable<Book> GetAllBooks()
         {
-            return _dbContext.Books.Include(x => x.BookAuthors).Include(x => x.BookCategories);
+            return _dbContext.Books
+                .Include(x => x.BookAuthors)
+                .ThenInclude(x => x.Author)
+                .Include(x => x.BookCategories)
+                .ThenInclude(x => x.Category);
         }
     }
 }
