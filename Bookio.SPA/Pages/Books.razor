@@ -3,11 +3,11 @@
 @using Bookio.SPA.Models
 @inject BookService BookService
 
+<div class="form-group">
+    <input class="form-control" type="text" name="book-search" placeholder="Search a book..." @oninput="(e => SearchBookByTitle(e.Value.ToString()) )" />
+</div>
 
-<h3>Books</h3>
-
-<input class="form-control" type="text" name="book-search" placeholder="Search a book..." @oninput="(e => SearchBookByTitle(e.Value.ToString()) )" />
-<p>Selected book: @SelectedBook</p>
+<h3>List of Books</h3>
 
 <div class="list-of-books">
     @foreach (var book in booksList)
@@ -45,7 +45,7 @@
                     <div>
                         @for (int i = 0; i < ratingToIterate; i++)
                         {
-                        <span class="oi oi-star" aria-hidden="true"></span>
+                            <span class="oi oi-star" aria-hidden="true"></span>
 
                         }
                         <span>( @rating )</span>
@@ -124,7 +124,7 @@
 
         booksList = BookService.GetAllBooks()
                                 .Where(x => x.Title.ToLower()
-                                .Contains(TxtSearchBookField))
+                                .Contains(TxtSearchBookField)) 
                                 .ToList();
     }
 }

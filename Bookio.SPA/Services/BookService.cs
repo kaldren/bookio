@@ -35,5 +35,10 @@ namespace Bookio.SPA.Services
                 .Include(x => x.BookCategories)
                 .ThenInclude(x => x.Category);
         }
+
+        public IEnumerable<BookAuthor> GetAllAuthors()
+        {
+            return _dbContext.BookAuthors;
+        }
     }
 }
