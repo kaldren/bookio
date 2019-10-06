@@ -16,6 +16,8 @@ namespace Bookio.SPA.Models
         public string ShortDescription { get; set; }
         public string LongDescription { get; set; }
         public string Status { get; set; }
+        public int Rating { get; set; }
+        public int NumVoters { get; set; }
         public Author Author { get; set; }
         public ICollection<BookAuthor> BookAuthors { get; set; }
         public Category Category { get; set; }

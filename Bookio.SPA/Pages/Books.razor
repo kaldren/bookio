@@ -29,6 +29,30 @@
                         }
                     }
                 </p>
+                @{
+                    var rating = (double)book.Rating / (double)book.NumVoters;
+                    double ratingToIterate = 0;
+
+                    if ((rating % 1) >= 0.5)
+                    {
+                        ratingToIterate = Math.Ceiling(rating);
+                    }
+                    else
+                    {
+                        ratingToIterate = Math.Floor(rating);
+                    }
+
+                    <div>
+                        @for (int i = 0; i < ratingToIterate; i++)
+                        {
+                        <span class="oi oi-star" aria-hidden="true"></span>
+
+                        }
+                        <span>( @rating )</span>
+                        <p>@book.NumVoters Vote(s)</p>
+                    </div>
+                }
+
                 <button class="btn btn-primary btn-view-book" @onclick="(e => ShowBookByIsbn(book.Isbn))"
                         data-toggle="modal" data-target="#modal-@book.Isbn">
                     Info
@@ -79,7 +103,7 @@
 </div>
 
 @code {
-    string SelectedBook;
+    public string SelectedBook { get; set; } = string.Empty;
     public string TxtSearchBookField { get; set; } = string.Empty;
 
     List<Book> booksList;
