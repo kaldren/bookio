@@ -1,5 +1,7 @@
-﻿using Bookio.SPA.Models;
+﻿using Bookio.SPA.Data;
+using Bookio.SPA.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,26 +14,22 @@ namespace Bookio.SPA.Services
     public class BookService
     {
         private IWebHostEnvironment _webHostEnvironment;
+        private ApplicationDbContext _dbContext;
 
         private string JsonBooksFilePath
         {
             get { return Path.Combine(_webHostEnvironment.ContentRootPath, "Data", "books.json"); }
         }
 
-        public BookService(IWebHostEnvironment webHostEnvironment)
+        public BookService(IWebHostEnvironment webHostEnvironment, ApplicationDbContext dbContext)
         {
             _webHostEnvironment = webHostEnvironment;
+            _dbContext = dbContext;
         }
 
         public IEnumerable<Book> GetAllBooks()
         {
-            using (var jsonFileReader = File.OpenText(JsonBooksFilePath))
-            {
-                return JsonSerializer.Deserialize<Book[]>(jsonFileReader.ReadToEnd(), new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
-            }
+            return _dbContext.Books.Include(x => x.BookAuthors).Include(x => x.BookCategories);
         }
     }
 }

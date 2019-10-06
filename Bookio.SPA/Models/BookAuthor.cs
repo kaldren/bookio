@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 
 namespace Bookio.SPA.Models
 {
-    public class Author
+    public class BookAuthor
     {
+        public int BookId { get; set; }
+        public Book Book { get; set; }
+
         public int AuthorId { get; set; }
-        public string Name { get; set; }
-        public ICollection<BookAuthor> BookAuthors { get; set; }
+        public Author Author { get; set; }
     }
 }
