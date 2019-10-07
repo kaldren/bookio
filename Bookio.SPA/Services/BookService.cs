@@ -13,17 +13,10 @@ namespace Bookio.SPA.Services
 {
     public class BookService
     {
-        private IWebHostEnvironment _webHostEnvironment;
         private ApplicationDbContext _dbContext;
-
-        private string JsonBooksFilePath
-        {
-            get { return Path.Combine(_webHostEnvironment.ContentRootPath, "Data", "books.json"); }
-        }
 
         public BookService(IWebHostEnvironment webHostEnvironment, ApplicationDbContext dbContext)
         {
-            _webHostEnvironment = webHostEnvironment;
             _dbContext = dbContext;
         }
 
@@ -34,11 +27,6 @@ namespace Bookio.SPA.Services
                 .ThenInclude(x => x.Author)
                 .Include(x => x.BookCategories)
                 .ThenInclude(x => x.Category);
-        }
-
-        public IEnumerable<BookAuthor> GetAllAuthors()
-        {
-            return _dbContext.BookAuthors;
         }
     }
 }
