@@ -28,5 +28,10 @@ namespace Bookio.SPA.Services
                 .Include(x => x.BookCategories)
                 .ThenInclude(x => x.Category);
         }
+
+        public Book GetBookById(int bookId)
+        {
+            return _dbContext.Books.SingleOrDefault(x => x.BookId == bookId);
+        }
     }
 }
