@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookio.SPA", "Bookio.SPA\Bookio.SPA.csproj", "{B5592FAD-B532-4FBD-93FE-9E97A805DC6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookio.Core", "Bookio.Core\Bookio.Core.csproj", "{9A8C5512-357A-4F86-9F99-DB6F546C069A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookio.Core", "Bookio.Core\Bookio.Core.csproj", "{9A8C5512-357A-4F86-9F99-DB6F546C069A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookio.Data", "Bookio.Data\Bookio.Data.csproj", "{9E2022AF-1EE4-41EE-B349-DBAC10E97CDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookio.Data", "Bookio.Data\Bookio.Data.csproj", "{9E2022AF-1EE4-41EE-B349-DBAC10E97CDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
