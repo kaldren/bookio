@@ -1,5 +1,5 @@
 using Bookio.SPA.Areas.Identity;
-using Bookio.SPA.Data;
+using Bookio.Data;
 using Bookio.SPA.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Authorization;

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Bookio.SPA.Data.Migrations
+namespace Bookio.Data.Migrations
 {
-    public partial class Updated : Migration
+    public partial class Migration4 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

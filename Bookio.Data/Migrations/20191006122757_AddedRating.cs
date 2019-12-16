@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Bookio.SPA.Data.Migrations
+namespace Bookio.Data.Migrations
 {
-    public partial class AddedNumVoters : Migration
+    public partial class AddedRating : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "NumVoters",
+                name: "Rating",
                 table: "Books",
                 nullable: false,
                 defaultValue: 0);
@@ -16,7 +16,7 @@ namespace Bookio.SPA.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "NumVoters",
+                name: "Rating",
                 table: "Books");
         }
     }

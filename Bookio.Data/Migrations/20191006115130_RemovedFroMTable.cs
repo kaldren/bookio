@@ -1,97 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Bookio.SPA.Data.Migrations
+namespace Bookio.Data.Migrations
 {
-    public partial class Migration2 : Migration
+    public partial class RemovedFroMTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropForeignKey(
-                name: "FK_BookAuthor_Authors_AuthorId",
-                table: "BookAuthor");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_BookAuthor_Books_BookId",
-                table: "BookAuthor");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_BookCategory_Books_BookId",
-                table: "BookCategory");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_BookCategory_Categories_CategoryId",
-                table: "BookCategory");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_BookCategory",
-                table: "BookCategory");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_BookAuthor",
-                table: "BookAuthor");
-
-            migrationBuilder.RenameTable(
-                name: "BookCategory",
-                newName: "BookCategories");
-
-            migrationBuilder.RenameTable(
-                name: "BookAuthor",
-                newName: "BookAuthors");
-
-            migrationBuilder.RenameIndex(
-                name: "IX_BookCategory_CategoryId",
-                table: "BookCategories",
-                newName: "IX_BookCategories_CategoryId");
-
-            migrationBuilder.RenameIndex(
-                name: "IX_BookAuthor_AuthorId",
-                table: "BookAuthors",
-                newName: "IX_BookAuthors_AuthorId");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_BookCategories",
-                table: "BookCategories",
-                columns: new[] { "BookId", "CategoryId" });
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_BookAuthors",
-                table: "BookAuthors",
-                columns: new[] { "BookId", "AuthorId" });
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_BookAuthors_Authors_AuthorId",
-                table: "BookAuthors",
-                column: "AuthorId",
-                principalTable: "Authors",
-                principalColumn: "AuthorId",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_BookAuthors_Books_BookId",
-                table: "BookAuthors",
-                column: "BookId",
-                principalTable: "Books",
-                principalColumn: "BookId",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_BookCategories_Books_BookId",
-                table: "BookCategories",
-                column: "BookId",
-                principalTable: "Books",
-                principalColumn: "BookId",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_BookCategories_Categories_CategoryId",
-                table: "BookCategories",
-                column: "CategoryId",
-                principalTable: "Categories",
-                principalColumn: "CategoryId",
-                onDelete: ReferentialAction.Cascade);
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_BookAuthors_Authors_AuthorId",
@@ -172,6 +85,93 @@ namespace Bookio.SPA.Data.Migrations
             migrationBuilder.AddForeignKey(
                 name: "FK_BookCategory_Categories_CategoryId",
                 table: "BookCategory",
+                column: "CategoryId",
+                principalTable: "Categories",
+                principalColumn: "CategoryId",
+                onDelete: ReferentialAction.Cascade);
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_BookAuthor_Authors_AuthorId",
+                table: "BookAuthor");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_BookAuthor_Books_BookId",
+                table: "BookAuthor");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_BookCategory_Books_BookId",
+                table: "BookCategory");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_BookCategory_Categories_CategoryId",
+                table: "BookCategory");
+
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_BookCategory",
+                table: "BookCategory");
+
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_BookAuthor",
+                table: "BookAuthor");
+
+            migrationBuilder.RenameTable(
+                name: "BookCategory",
+                newName: "BookCategories");
+
+            migrationBuilder.RenameTable(
+                name: "BookAuthor",
+                newName: "BookAuthors");
+
+            migrationBuilder.RenameIndex(
+                name: "IX_BookCategory_CategoryId",
+                table: "BookCategories",
+                newName: "IX_BookCategories_CategoryId");
+
+            migrationBuilder.RenameIndex(
+                name: "IX_BookAuthor_AuthorId",
+                table: "BookAuthors",
+                newName: "IX_BookAuthors_AuthorId");
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_BookCategories",
+                table: "BookCategories",
+                columns: new[] { "BookId", "CategoryId" });
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_BookAuthors",
+                table: "BookAuthors",
+                columns: new[] { "BookId", "AuthorId" });
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_BookAuthors_Authors_AuthorId",
+                table: "BookAuthors",
+                column: "AuthorId",
+                principalTable: "Authors",
+                principalColumn: "AuthorId",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_BookAuthors_Books_BookId",
+                table: "BookAuthors",
+                column: "BookId",
+                principalTable: "Books",
+                principalColumn: "BookId",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_BookCategories_Books_BookId",
+                table: "BookCategories",
+                column: "BookId",
+                principalTable: "Books",
+                principalColumn: "BookId",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_BookCategories_Categories_CategoryId",
+                table: "BookCategories",
                 column: "CategoryId",
                 principalTable: "Categories",
                 principalColumn: "CategoryId",

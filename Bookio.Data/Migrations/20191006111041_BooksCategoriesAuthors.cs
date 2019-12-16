@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace Bookio.SPA.Data.Migrations
+namespace Bookio.Data.Migrations
 {
     public partial class BooksCategoriesAuthors : Migration
     {

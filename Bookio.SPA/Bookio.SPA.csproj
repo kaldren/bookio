@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Bookio.Core\Bookio.Core.csproj" />
+    <ProjectReference Include="..\Bookio.Data\Bookio.Data.csproj" />
   </ItemGroup>
 
 </Project>

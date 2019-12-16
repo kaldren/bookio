@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Bookio.SPA.Data.Migrations
+namespace Bookio.Data.Migrations
 {
-    public partial class ChangedFromBookAuthorToAuthorAndBookCategoryToCategory : Migration
+    public partial class Migrationnn : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

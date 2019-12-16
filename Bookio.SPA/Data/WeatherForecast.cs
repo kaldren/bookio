@@ -1,6 +1,6 @@
 using System;
 
-namespace Bookio.SPA.Data
+namespace Bookio.Data
 {
     public class WeatherForecast
     {

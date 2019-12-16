@@ -1,5 +1,5 @@
 ﻿using Bookio.Core.Models;
-using Bookio.SPA.Data;
+using Bookio.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using System;

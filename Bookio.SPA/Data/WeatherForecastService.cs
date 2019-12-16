@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bookio.SPA.Data
+namespace Bookio.Data
 {
     public class WeatherForecastService
     {
