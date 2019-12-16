@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookio.SPA", "Bookio.SPA\Bookio.SPA.csproj", "{B5592FAD-B532-4FBD-93FE-9E97A805DC6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookio.SPA", "Bookio.SPA\Bookio.SPA.csproj", "{B5592FAD-B532-4FBD-93FE-9E97A805DC6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookio.Core", "Bookio.Core\Bookio.Core.csproj", "{9A8C5512-357A-4F86-9F99-DB6F546C069A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookio.Data", "Bookio.Data\Bookio.Data.csproj", "{9E2022AF-1EE4-41EE-B349-DBAC10E97CDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{B5592FAD-B532-4FBD-93FE-9E97A805DC6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5592FAD-B532-4FBD-93FE-9E97A805DC6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5592FAD-B532-4FBD-93FE-9E97A805DC6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A8C5512-357A-4F86-9F99-DB6F546C069A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A8C5512-357A-4F86-9F99-DB6F546C069A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A8C5512-357A-4F86-9F99-DB6F546C069A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A8C5512-357A-4F86-9F99-DB6F546C069A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E2022AF-1EE4-41EE-B349-DBAC10E97CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E2022AF-1EE4-41EE-B349-DBAC10E97CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E2022AF-1EE4-41EE-B349-DBAC10E97CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E2022AF-1EE4-41EE-B349-DBAC10E97CDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

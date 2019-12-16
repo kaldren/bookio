@@ -33,5 +33,18 @@ namespace Bookio.SPA.Services
         {
             return _dbContext.Books.SingleOrDefault(x => x.BookId == bookId);
         }
+
+        public string ShowBookTitleByIsbn(string isbn)
+        {
+            return _dbContext.Books.FirstOrDefault(x => x.Isbn == isbn).Title;
+        }
+
+        public IEnumerable<Book> SearchBookByTitle(string title)
+        {
+            return GetAllBooks()
+                            .Where(x => x.Title.ToLower()
+                            .Contains(title.ToLower()))
+                            .ToList();
+        }
     }
 }
