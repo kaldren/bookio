@@ -1,8 +1,28 @@
 ﻿@page "/authors"
-@page "/authors/{authorId}"
+@page "/authors/{authorId:int}"
 
-<h3>Authors</h3>
+@using Bookio.Core.Models
+@using Bookio.SPA.Services
+@inject AuthorsService AuthorsService
+
+@if (author != null)
+{
+    <h3>@author.Name</h3>
+}
+else
+{
+    <h3>Oops! @AuthorId</h3>
+}
 
 @code {
 
+    [Parameter]
+    public int AuthorId { get; set; }
+
+    Author author;
+
+    protected async override Task OnInitializedAsync()
+    {
+        author = await AuthorsService.GetAuthorById(AuthorId);
+    }
 }
