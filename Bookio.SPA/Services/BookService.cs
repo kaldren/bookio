@@ -8,11 +8,11 @@ using System.Linq;
 
 namespace Bookio.SPA.Services
 {
-    public class BookService
+    public class BooksService
     {
         private ApplicationDbContext _dbContext;
 
-        public BookService(IWebHostEnvironment webHostEnvironment, ApplicationDbContext dbContext)
+        public BooksService(IWebHostEnvironment webHostEnvironment, ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
