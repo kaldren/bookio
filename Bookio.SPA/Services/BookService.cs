@@ -1,13 +1,10 @@
-﻿using Bookio.SPA.Data;
-using Bookio.SPA.Models;
+﻿using Bookio.Core.Models;
+using Bookio.SPA.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Bookio.SPA.Services
 {

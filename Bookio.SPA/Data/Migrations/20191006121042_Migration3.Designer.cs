@@ -21,7 +21,7 @@ namespace Bookio.SPA.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Bookio.SPA.Models.Author", b =>
+            modelBuilder.Entity("Bookio.Core.Models.Author", b =>
                 {
                     b.Property<int>("AuthorId")
                         .ValueGeneratedOnAdd()
@@ -36,7 +36,7 @@ namespace Bookio.SPA.Data.Migrations
                     b.ToTable("Authors");
                 });
 
-            modelBuilder.Entity("Bookio.SPA.Models.Book", b =>
+            modelBuilder.Entity("Bookio.Core.Models.Book", b =>
                 {
                     b.Property<int>("BookId")
                         .ValueGeneratedOnAdd()
@@ -72,7 +72,7 @@ namespace Bookio.SPA.Data.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("Bookio.SPA.Models.BookAuthor", b =>
+            modelBuilder.Entity("Bookio.Core.Models.BookAuthor", b =>
                 {
                     b.Property<int>("BookId")
                         .HasColumnType("int");
@@ -87,7 +87,7 @@ namespace Bookio.SPA.Data.Migrations
                     b.ToTable("BookAuthors");
                 });
 
-            modelBuilder.Entity("Bookio.SPA.Models.BookCategory", b =>
+            modelBuilder.Entity("Bookio.Core.Models.BookCategory", b =>
                 {
                     b.Property<int>("BookId")
                         .HasColumnType("int");
@@ -102,7 +102,7 @@ namespace Bookio.SPA.Data.Migrations
                     b.ToTable("BookCategories");
                 });
 
-            modelBuilder.Entity("Bookio.SPA.Models.Category", b =>
+            modelBuilder.Entity("Bookio.Core.Models.Category", b =>
                 {
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
@@ -317,30 +317,30 @@ namespace Bookio.SPA.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Bookio.SPA.Models.BookAuthor", b =>
+            modelBuilder.Entity("Bookio.Core.Models.BookAuthor", b =>
                 {
-                    b.HasOne("Bookio.SPA.Models.Author", "Author")
+                    b.HasOne("Bookio.Core.Models.Author", "Author")
                         .WithMany("BookAuthors")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Bookio.SPA.Models.Book", "Book")
+                    b.HasOne("Bookio.Core.Models.Book", "Book")
                         .WithMany("BookAuthors")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Bookio.SPA.Models.BookCategory", b =>
+            modelBuilder.Entity("Bookio.Core.Models.BookCategory", b =>
                 {
-                    b.HasOne("Bookio.SPA.Models.Book", "Book")
+                    b.HasOne("Bookio.Core.Models.Book", "Book")
                         .WithMany("BookCategories")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Bookio.SPA.Models.Category", "Category")
+                    b.HasOne("Bookio.Core.Models.Category", "Category")
                         .WithMany("BookCategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
