@@ -87,13 +87,8 @@
 
     List<Book> booksList;
 
-    protected override void OnInitialized()
-    {
-        booksList = BooksService.GetAllBooks().ToList();
-    }
-
     private void ShowBookByIsbn(string isbn)
     {
-        SelectedBook = booksList.FirstOrDefault(x => x.Isbn == isbn).Title;
+        SelectedBook = BooksService.GetAllBooks().FirstOrDefault(x => x.Isbn == isbn).Title;
     }
 }
