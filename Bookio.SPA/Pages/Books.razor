@@ -17,71 +17,7 @@
 
     if (isBookIdAnInt)
     {
-        var individualBook = BooksService.GetBookById(id);
-
-        // Individual Book
-        if (individualBook != null)
-        {
-            <NavLink href="/books" class="btn btn-primary">
-                All Books
-            </NavLink>
-            <hr />
-            <div class="card" style="width: 18rem;">
-                <img src="@individualBook.ThumbnailUrl" class="card-img-top" alt="@individualBook.Title">
-                <div class="card-body">
-                    <NavLink href="@NavigationManager.ToAbsoluteUri(@NavigationManager.Uri + '/' + individualBook.BookId.ToString())">
-                        <h5 class="card-title">@individualBook.Title</h5>
-                    </NavLink>
-                    <p>
-                        @for (int i = 0; i < individualBook.BookAuthors.Count; i++)
-                        {
-                            if (i + 1 < individualBook.BookAuthors.Count)
-                            {
-                                <span><a href="/authors/@individualBook.BookAuthors.ElementAt(i).AuthorId">
-                                    @individualBook.BookAuthors.ElementAt(i).Author.Name</a>,</span>
-                            }
-                            else
-                            {
-                                <span><a href="/authors/@individualBook.BookAuthors.ElementAt(i).AuthorId">
-                                    @individualBook.BookAuthors.ElementAt(i).Author.Name</a></span>
-                            }
-                        }
-                    </p>
-                    @{
-                        var rating = (double)individualBook.Rating / (double)individualBook.NumVoters;
-                        double ratingToIterate = 0;
-
-                        if ((rating % 1) >= 0.5)
-                        {
-                            ratingToIterate = Math.Ceiling(rating);
-                        }
-                        else
-                        {
-                            ratingToIterate = Math.Floor(rating);
-                        }
-
-                        <div>
-                            @for (int i = 0; i < ratingToIterate; i++)
-                            {
-                                <span class="oi oi-star" aria-hidden="true"></span>
-
-                            }
-                            <span>( @rating )</span>
-                            <p>@individualBook.NumVoters Vote(s)</p>
-                        </div>
-                    }
-
-                    <button class="btn btn-primary btn-view-book" @onclick="(e => ShowBookByIsbn(individualBook.Isbn))"
-                            data-toggle="modal" data-target="#modal-@individualBook.Isbn">
-                        Info
-                    </button>
-                    <button class="btn btn-success btn-read-book" @onclick="(e => ShowBookByIsbn(individualBook.Isbn))"
-                            data-toggle="modal" data-target="#modal-@individualBook.Isbn">
-                        Read
-                    </button>
-                </div>
-            </div>
-        }
+        <BookComponent BookId="@id" />
     }
     // All Books
     else
