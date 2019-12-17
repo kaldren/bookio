@@ -3,13 +3,15 @@
 
 @using Bookio.SPA.Services
 @using Bookio.Core.Models
-@inject NavigationManager NavigationManager
 @inject BooksService BooksService
 @*// Individual books*@
 <div class="form-group">
     <input class="form-control" type="text" name="book-search" placeholder="Search a book..." @oninput="(e => SearchBookByTitle(e.Value.ToString()) )" />
 </div>
-@if (BookId != null)
+@if (BookId == null)
+{
+    <BookComponent />
+} else
 {
     int id = 0;
 
@@ -19,150 +21,6 @@
     {
         <BookComponent BookId="@id" />
     }
-    // All Books
-    else
-    {
-        <h3>List of Books</h3>
-
-        <div class="list-of-books">
-            @foreach (var book in booksList)
-            {
-                <div class="card" style="width: 18rem;">
-                    <img src="@book.ThumbnailUrl" class="card-img-top" alt="@book.Title">
-                    <div class="card-body">
-                        <h5 class="card-title">@book.Title</h5>
-                        <p>
-                            @for (int i = 0; i < book.BookAuthors.Count; i++)
-                            {
-                                if (i + 1 < book.BookAuthors.Count)
-                                {
-                                    <span><a href="/authors/@book.BookAuthors.ElementAt(i).AuthorId">@book.BookAuthors.ElementAt(i).Author.Name</a>,</span>
-                                }
-                                else
-                                {
-                                    <span><a href="/authors/@book.BookAuthors.ElementAt(i).AuthorId">@book.BookAuthors.ElementAt(i).Author.Name</a></span>
-                                }
-                            }
-                        </p>
-                        
-                        <BookRatingComponent Book="@book" />
-
-                        <button class="btn btn-primary btn-view-book" @onclick="(e => ShowBookByIsbn(book.Isbn))"
-                                data-toggle="modal" data-target="#modal-@book.Isbn">
-                            Info
-                        </button>
-                        <button class="btn btn-success btn-read-book" @onclick="(e => ShowBookByIsbn(book.Isbn))"
-                                data-toggle="modal" data-target="#modal-@book.Isbn">
-                            Read
-                        </button>
-                    </div>
-                </div>
-                <!-- Modal -->
-                <div class="modal fade" id="modal-@book.Isbn" tabindex="-1" role="dialog" aria-labelledby="@book.Isbn" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <img src="@book.ThumbnailUrl" alt="@book.Title" />
-                                <h5 class="modal-title" id="exampleModalLabel">@book.Title</h5>
-                                <p>
-                                    (
-                                    @for (int i = 0; i < book.BookCategories.Count; i++)
-                                    {
-                                        if (i + 1 < book.BookCategories.Count)
-                                        {
-                                            <span>@book.BookCategories.ElementAt(i).Category.Name,</span>
-                                        }
-                                        else
-                                        {
-                                            <span>@book.BookCategories.ElementAt(i).Category.Name</span>
-                                        }
-                                    }
-                                    )
-                                </p>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                @book.LongDescription
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-    }
-}
-else
-{
-    <h3>List of Books</h3>
-
-    <div class="list-of-books">
-        @foreach (var book in booksList)
-        {
-            <div class="card" style="width: 18rem;">
-                <img src="@book.ThumbnailUrl" class="card-img-top" alt="@book.Title">
-                <div class="card-body">
-                    <NavLink href="@NavigationManager.ToAbsoluteUri(@NavigationManager.Uri + '/' + book.BookId.ToString())">
-                        <h5 class="card-title">@book.Title</h5>
-                    </NavLink>
-                    <p>
-                        <AuthorComponent Book="@book" />
-                    </p>
-
-                    <BookRatingComponent Book="@book" />
-
-                    <button class="btn btn-primary btn-view-book" @onclick="(e => ShowBookByIsbn(book.Isbn))"
-                            data-toggle="modal" data-target="#modal-@book.Isbn">
-                        Info
-                    </button>
-                    <button class="btn btn-success btn-read-book" @onclick="(e => ShowBookByIsbn(book.Isbn))"
-                            data-toggle="modal" data-target="#modal-@book.Isbn">
-                        Read
-                    </button>
-                </div>
-            </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="modal-@book.Isbn" tabindex="-1" role="dialog" aria-labelledby="@book.Isbn" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <img src="@book.ThumbnailUrl" alt="@book.Title" />
-                            <h5 class="modal-title" id="exampleModalLabel">@book.Title</h5>
-                            <p>
-                                (
-                                @for (int i = 0; i < book.BookCategories.Count; i++)
-                                {
-                                    if (i + 1 < book.BookCategories.Count)
-                                    {
-                                        <span>@book.BookCategories.ElementAt(i).Category.Name,</span>
-                                    }
-                                    else
-                                    {
-                                        <span>@book.BookCategories.ElementAt(i).Category.Name</span>
-                                    }
-                                }
-                                )
-                            </p>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            @book.LongDescription
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
 }
 
 
