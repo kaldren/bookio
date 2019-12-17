@@ -37,11 +37,11 @@
                         {
                             if (i + 1 < individualBook.BookAuthors.Count)
                             {
-                                <span>@individualBook.BookAuthors.ElementAt(i).Author.Name,</span>
+                                <span><a href="/authors/@individualBook.BookAuthors.ElementAt(i).AuthorId">@individualBook.BookAuthors.ElementAt(i).Author.Name</a>,</span>
                             }
                             else
                             {
-                                <span>@individualBook.BookAuthors.ElementAt(i).Author.Name</span>
+                                <span><a href="/authors/@individualBook.BookAuthors.ElementAt(i).AuthorId">@individualBook.BookAuthors.ElementAt(i).Author.Name</a></span>
                             }
                         }
                     </p>
@@ -98,11 +98,11 @@
                             {
                                 if (i + 1 < book.BookAuthors.Count)
                                 {
-                                    <span>@book.BookAuthors.ElementAt(i).Author.Name,</span>
+                                    <span><a href="/authors/@book.BookAuthors.ElementAt(i).AuthorId">@book.BookAuthors.ElementAt(i).Author.Name</a>,</span>
                                 }
                                 else
                                 {
-                                    <span>@book.BookAuthors.ElementAt(i).Author.Name</span>
+                                    <span><a href="/authors/@book.BookAuthors.ElementAt(i).AuthorId">@book.BookAuthors.ElementAt(i).Author.Name</a></span>
                                 }
                             }
                         </p>
@@ -197,11 +197,11 @@ else
                         {
                             if (i + 1 < book.BookAuthors.Count)
                             {
-                                <span>@book.BookAuthors.ElementAt(i).Author.Name,</span>
+                                <span><a href="/authors/@book.BookAuthors.ElementAt(i).AuthorId">@book.BookAuthors.ElementAt(i).Author.Name</a>,</span>
                             }
                             else
                             {
-                                <span>@book.BookAuthors.ElementAt(i).Author.Name</span>
+                                <span><a href="/authors/@book.BookAuthors.ElementAt(i).AuthorId">@book.BookAuthors.ElementAt(i).Author.Name</a></span>
                             }
                         }
                     </p>
