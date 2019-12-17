@@ -1,4 +1,4 @@
-# bookio - WIP project
+# Bookio - WIP project
 ASP.NET Core books SPA, similar to Goodreads.
 
 Features I'll try to implement:
