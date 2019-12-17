@@ -1,5 +1,5 @@
 # Bookio - WIP project
-ASP.NET Core books SPA, similar to Goodreads.
+Books SPA, similar to Goodreads.
 
 Features I'll try to implement:
 1. Browse through books
