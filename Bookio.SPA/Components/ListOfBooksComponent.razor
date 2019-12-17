@@ -1,0 +1,34 @@
+﻿@using Bookio.SPA.Services
+@using Bookio.Core.Models
+
+@inject BooksService BooksService
+@inject NavigationManager NavigationManager
+
+<div class="list-of-books">
+    @foreach (var book in booksList)
+    {
+        <div class="card" style="width: 18rem;">
+            <img src="@book.ThumbnailUrl" class="card-img-top" alt="@book.Title">
+            <div class="card-body">
+                <NavLink href="@NavigationManager.ToAbsoluteUri(@NavigationManager.Uri + '/' + book.BookId.ToString())">
+                    <h5 class="card-title">@book.Title</h5>
+                </NavLink>
+
+                <AuthorComponent Book="@book" />
+
+                <BookRatingComponent Book="@book" />
+
+                <BookOptionsComponent Book="@book" />
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    List<Book> booksList;
+
+    protected override void OnInitialized()
+    {
+        booksList = BooksService.GetAllBooks().ToList();
+    }
+}

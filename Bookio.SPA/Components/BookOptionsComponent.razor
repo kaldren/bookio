@@ -1,0 +1,59 @@
+﻿@using Bookio.SPA.Services
+@using Bookio.Core.Models
+
+@inject BooksService BooksService
+
+<button class="btn btn-primary btn-view-Book" @onclick="(e => ShowBookByIsbn(Book.Isbn))"
+        data-toggle="modal" data-target="#modal-@Book.Isbn">
+    Info
+</button>
+<button class="btn btn-success btn-read-Book" @onclick="(e => ShowBookByIsbn(Book.Isbn))"
+        data-toggle="modal" data-target="#modal-@Book.Isbn">
+    Read
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-@Book.Isbn" tabindex="-1" role="dialog" aria-labelledby="@Book.Isbn" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="@Book.ThumbnailUrl" alt="@Book.Title" />
+                <h5 class="modal-title" id="exampleModalLabel">@Book.Title</h5>
+                <p>
+                    (
+                    @for (int i = 0; i < Book.BookCategories.Count; i++)
+                    {
+                        if (i + 1 < Book.BookCategories.Count)
+                        {
+                            <span>@Book.BookCategories.ElementAt(i).Category.Name,</span>
+                        }
+                        else
+                        {
+                            <span>@Book.BookCategories.ElementAt(i).Category.Name</span>
+                        }
+                    }
+                    )
+                </p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @Book.LongDescription
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Book Book { get; set; }
+
+    private void ShowBookByIsbn(string isbn)
+    {
+        Book.Title = BooksService.GetAllBooks().FirstOrDefault(x => x.Isbn == isbn).Title;
+    }
+}
