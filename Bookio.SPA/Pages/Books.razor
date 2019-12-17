@@ -37,11 +37,13 @@
                         {
                             if (i + 1 < individualBook.BookAuthors.Count)
                             {
-                                <span><a href="/authors/@individualBook.BookAuthors.ElementAt(i).AuthorId">@individualBook.BookAuthors.ElementAt(i).Author.Name</a>,</span>
+                                <span><a href="/authors/@individualBook.BookAuthors.ElementAt(i).AuthorId">
+                                    @individualBook.BookAuthors.ElementAt(i).Author.Name</a>,</span>
                             }
                             else
                             {
-                                <span><a href="/authors/@individualBook.BookAuthors.ElementAt(i).AuthorId">@individualBook.BookAuthors.ElementAt(i).Author.Name</a></span>
+                                <span><a href="/authors/@individualBook.BookAuthors.ElementAt(i).AuthorId">
+                                    @individualBook.BookAuthors.ElementAt(i).Author.Name</a></span>
                             }
                         }
                     </p>
