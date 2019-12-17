@@ -20,50 +20,10 @@
                 <NavLink href="@NavigationManager.ToAbsoluteUri(@NavigationManager.Uri + '/' + individualBook.BookId.ToString())">
                     <h5 class="card-title">@individualBook.Title</h5>
                 </NavLink>
-                <p>
-                    @for (int i = 0; i < individualBook.BookAuthors.Count; i++)
-                    {
-                        if (i + 1 < individualBook.BookAuthors.Count)
-                        {
-                            <span>
-                                <a href="/authors/@individualBook.BookAuthors.ElementAt(i).AuthorId">
-                                    @individualBook.BookAuthors.ElementAt(i).Author.Name
-                                </a>,
-                            </span>
-                        }
-                        else
-                        {
-                            <span>
-                                <a href="/authors/@individualBook.BookAuthors.ElementAt(i).AuthorId">
-                                    @individualBook.BookAuthors.ElementAt(i).Author.Name
-                                </a>
-                            </span>
-                        }
-                    }
-                </p>
-                @{
-                    var rating = (double)individualBook.Rating / (double)individualBook.NumVoters;
-                    double ratingToIterate = 0;
 
-                    if ((rating % 1) >= 0.5)
-                    {
-                        ratingToIterate = Math.Ceiling(rating);
-                    }
-                    else
-                    {
-                        ratingToIterate = Math.Floor(rating);
-                    }
+                <AuthorComponent Book="@individualBook" />
 
-                    <div>
-                        @for (int i = 0; i < ratingToIterate; i++)
-                        {
-                            <span class="oi oi-star" aria-hidden="true"></span>
-
-                        }
-                        <span>( @rating )</span>
-                        <p>@individualBook.NumVoters Vote(s)</p>
-                    </div>
-                }
+                <BookRatingComponent Book="@individualBook" />
 
                 <button class="btn btn-primary btn-view-book" @onclick="(e => ShowBookByIsbn(individualBook.Isbn))"
                         data-toggle="modal" data-target="#modal-@individualBook.Isbn">
@@ -84,8 +44,6 @@
     public int BookId { get; set; }
 
     public string SelectedBook { get; set; } = string.Empty;
-
-    List<Book> booksList;
 
     private void ShowBookByIsbn(string isbn)
     {

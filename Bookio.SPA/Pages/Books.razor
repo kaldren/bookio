@@ -44,29 +44,8 @@
                                 }
                             }
                         </p>
-                        @{
-                            var rating = (double)book.Rating / (double)book.NumVoters;
-                            double ratingToIterate = 0;
-
-                            if ((rating % 1) >= 0.5)
-                            {
-                                ratingToIterate = Math.Ceiling(rating);
-                            }
-                            else
-                            {
-                                ratingToIterate = Math.Floor(rating);
-                            }
-
-                            <div>
-                                @for (int i = 0; i < ratingToIterate; i++)
-                                {
-                                    <span class="oi oi-star" aria-hidden="true"></span>
-
-                                }
-                                <span>( @rating )</span>
-                                <p>@book.NumVoters Vote(s)</p>
-                            </div>
-                        }
+                        
+                        <BookRatingComponent Book="@book" />
 
                         <button class="btn btn-primary btn-view-book" @onclick="(e => ShowBookByIsbn(book.Isbn))"
                                 data-toggle="modal" data-target="#modal-@book.Isbn">
@@ -131,41 +110,10 @@ else
                         <h5 class="card-title">@book.Title</h5>
                     </NavLink>
                     <p>
-                        @for (int i = 0; i < book.BookAuthors.Count; i++)
-                        {
-                            if (i + 1 < book.BookAuthors.Count)
-                            {
-                                <span><a href="/authors/@book.BookAuthors.ElementAt(i).AuthorId">@book.BookAuthors.ElementAt(i).Author.Name</a>,</span>
-                            }
-                            else
-                            {
-                                <span><a href="/authors/@book.BookAuthors.ElementAt(i).AuthorId">@book.BookAuthors.ElementAt(i).Author.Name</a></span>
-                            }
-                        }
+                        <AuthorComponent Book="@book" />
                     </p>
-                    @{
-                        var rating = (double)book.Rating / (double)book.NumVoters;
-                        double ratingToIterate = 0;
 
-                        if ((rating % 1) >= 0.5)
-                        {
-                            ratingToIterate = Math.Ceiling(rating);
-                        }
-                        else
-                        {
-                            ratingToIterate = Math.Floor(rating);
-                        }
-
-                        <div>
-                            @for (int i = 0; i < ratingToIterate; i++)
-                            {
-                                <span class="oi oi-star" aria-hidden="true"></span>
-
-                            }
-                            <span>( @rating )</span>
-                            <p>@book.NumVoters Vote(s)</p>
-                        </div>
-                    }
+                    <BookRatingComponent Book="@book" />
 
                     <button class="btn btn-primary btn-view-book" @onclick="(e => ShowBookByIsbn(book.Isbn))"
                             data-toggle="modal" data-target="#modal-@book.Isbn">

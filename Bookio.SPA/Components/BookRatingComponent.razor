@@ -1,0 +1,32 @@
+﻿@using Bookio.Core.Models
+
+@{
+    var rating = (double)Book.Rating / (double)Book.NumVoters;
+    double ratingToIterate = 0;
+
+    if ((rating % 1) >= 0.5)
+    {
+        ratingToIterate = Math.Ceiling(rating);
+    }
+    else
+    {
+        ratingToIterate = Math.Floor(rating);
+    }
+
+    <div>
+        @for (int i = 0; i < ratingToIterate; i++)
+        {
+            <span class="oi oi-star" aria-hidden="true"></span>
+
+        }
+        <span>( @rating )</span>
+        <p>@Book.NumVoters Vote(s)</p>
+    </div>
+}
+
+@code {
+
+    [Parameter]
+    public Book Book { get; set; }
+
+}

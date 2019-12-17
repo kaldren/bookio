@@ -1,0 +1,28 @@
+﻿@using Bookio.Core.Models
+
+@{
+    @for (int i = 0; i < Book.BookAuthors.Count; i++)
+    {
+        if (i + 1 < Book.BookAuthors.Count)
+        {
+            <span>
+                <a href="/authors/@Book.BookAuthors.ElementAt(i).AuthorId">
+                    @Book.BookAuthors.ElementAt(i).Author.Name
+                </a>,
+            </span>
+        }
+        else
+        {
+            <span>
+                <a href="/authors/@Book.BookAuthors.ElementAt(i).AuthorId">
+                    @Book.BookAuthors.ElementAt(i).Author.Name
+                </a>
+            </span>
+        }
+    }
+}
+
+@code {
+    [Parameter]
+    public Book Book { get; set; }
+}
