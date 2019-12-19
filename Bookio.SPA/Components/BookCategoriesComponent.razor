@@ -1,0 +1,20 @@
+﻿@using Bookio.SPA.Services
+@using Bookio.Core.Models
+
+@for (int i = 0; i < Book.BookCategories.Count; i++)
+{
+    if (i + 1 < Book.BookCategories.Count)
+    {
+        <span>@Book.BookCategories.ElementAt(i).Category.Name,</span>
+    }
+    else
+    {
+        <span>@Book.BookCategories.ElementAt(i).Category.Name</span>
+    }
+}
+
+@code {
+    [Parameter]
+    public Book Book { get; set; }
+
+}
