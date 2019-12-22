@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookio.Core", "Bookio.Core\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookio.Data", "Bookio.Data\Bookio.Data.csproj", "{9E2022AF-1EE4-41EE-B349-DBAC10E97CDC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bookio.Tests", "Bookio.Tests", "{977DD7A4-0137-4C22-9C49-3B6667FA6BE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "Bookio.Tests\UnitTests\UnitTests.csproj", "{50FD79F5-CD7D-411E-A84C-7FA9D487904B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,11 +31,18 @@ Global
 		{9E2022AF-1EE4-41EE-B349-DBAC10E97CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E2022AF-1EE4-41EE-B349-DBAC10E97CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E2022AF-1EE4-41EE-B349-DBAC10E97CDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50FD79F5-CD7D-411E-A84C-7FA9D487904B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50FD79F5-CD7D-411E-A84C-7FA9D487904B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50FD79F5-CD7D-411E-A84C-7FA9D487904B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50FD79F5-CD7D-411E-A84C-7FA9D487904B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D65ABE6F-8647-470A-A952-CF77186F957F}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{50FD79F5-CD7D-411E-A84C-7FA9D487904B} = {977DD7A4-0137-4C22-9C49-3B6667FA6BE7}
 	EndGlobalSection
 EndGlobal
